@@ -12,6 +12,7 @@ import MainStory from '../MainStory';
 import SecondaryStory from '../SecondaryStory';
 import OpinionStory from '../OpinionStory';
 import Advertisement from '../Advertisement';
+import { QUERIES } from '../../constants';
 
 const MainStoryGrid = () => {
   return (
@@ -32,13 +33,13 @@ const MainStoryGrid = () => {
 
       <OpinionSection>
         <SectionTitle>Opinion</SectionTitle>
-        <StoryList>
+        <OpinionStoryList>
           {OPINION_STORIES.map((story, index) => (
             <VerticalStoryWrapper key={story.id}>
               <OpinionStory {...story} />
             </VerticalStoryWrapper>
           ))}
-        </StoryList>
+        </OpinionStoryList>
       </OpinionSection>
 
       <AdvertisementSection>
@@ -73,13 +74,24 @@ const StoryList = styled.div`
   flex-direction: column;
 `;
 
+const OpinionStoryList = styled(StoryList)`
+  @media ${QUERIES.tabletOnly} {
+    flex-direction: row;
+  }
+`;
+
 const VerticalStoryWrapper = styled.div`
-/* to have the border bottom only between elements but not the las ast */
+  /* to have the border bottom only between elements but not the las ast */
   &:not(:last-of-type) {
     border-bottom: 1px solid var(--color-gray-300);
   }
   padding-bottom: 16px;
   margin-bottom: 16px;
+  @media ${QUERIES.tabletOnly} {
+    &:not(:last-of-type) {
+      border-bottom: none;
+    }
+  }
 `;
 
 const OpinionSection = styled.section`
