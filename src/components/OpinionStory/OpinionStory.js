@@ -8,10 +8,10 @@ const OpinionStory = ({ id, title, author, avatar }) => {
     <a href={`/story/${id}`}>
       <Wrapper>
         <Avatar alt="" src={avatar} />
-        <OpinionStoriesWrapper>
+        <div>
           <AuthorName>{author}</AuthorName>
           <ArticleTitle>{title}</ArticleTitle>
-        </OpinionStoriesWrapper>
+        </div>
       </Wrapper>
     </a>
   );
@@ -19,20 +19,15 @@ const OpinionStory = ({ id, title, author, avatar }) => {
 
 const Wrapper = styled.article`
   color: var(--color-gray-900);
-  display: grid;
-  grid-template-columns: minmax(300px, 1fr) 1fr;
   @media ${QUERIES.tabletOnly} {
-    display: block;
     max-width: 180px;
-    margin: 0 16px;
   }
 `;
 
-const OpinionStoriesWrapper = styled.div`
-  grid-row-start: -1;
-`;
 
 const Avatar = styled.img`
+  float: right;
+  margin-left: 16px;
   display: block;
   width: 48px;
   height: 48px;
@@ -41,6 +36,8 @@ const Avatar = styled.img`
   align-self: start;
   justify-self: end;
   @media ${QUERIES.tabletOnly} {
+    float: revert;
+    margin-left: 0;
     margin-bottom: 8px;
   }
 `;
