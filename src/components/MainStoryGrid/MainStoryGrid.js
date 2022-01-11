@@ -79,8 +79,11 @@ const Wrapper = styled.div`
 
 const MainStorySection = styled.section`
   grid-area: main-story;
-  border-right: 1px solid var(--color-gray-300);
-  padding-right: 16px;
+  @media ${QUERIES.tabletAndUp} {
+    padding-right: 16px;
+    border-right: 1px solid var(--color-gray-300);
+
+  }
 `;
 
 const SecondaryStorySection = styled.section`
