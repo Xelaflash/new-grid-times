@@ -7,7 +7,9 @@ const SecondaryStory = ({ id, title, image, location, abstract }) => {
       <Wrapper>
         <Image alt={image.alt} src={image.src} />
         <Heading>{title}</Heading>
-        <Abstract>{abstract}</Abstract>
+        <AbstractWrapper>
+          <Abstract>{abstract}</Abstract>
+        </AbstractWrapper>
       </Wrapper>
     </a>
   );
@@ -41,6 +43,11 @@ const Heading = styled.h2`
   line-height: 1.3;
   /* Optical alignment */
   margin-top: -2px;
+`;
+
+const AbstractWrapper = styled.div`
+/* permits the row to grow but does not affect the p itself as we are clamping it */
+  grid-area:abstract;
 `;
 
 const Abstract = styled.p`
