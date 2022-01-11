@@ -24,7 +24,6 @@ const Wrapper = styled.article`
   grid-template-columns: 120px 1fr;
   color: var(--color-gray-900);
   padding: 16px 0;
-  border-bottom: 1px solid var(--color-gray-300);
 `;
 
 const Image = styled.img`
