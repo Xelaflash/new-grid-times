@@ -57,22 +57,21 @@ const Wrapper = styled.div`
     "opinion-stories"
     "advertisement";
   gap: 48px;
-  margin-bottom: 48px;
 
   @media ${QUERIES.tabletOnly} {
     grid-template-areas:
       "main-story secondary-stories"
       "advertisement advertisement"
       "opinion-stories opinion-stories";
-    grid-template-columns: 1fr 282px;
-    gap: 0;
+    grid-template-columns: 2fr 1fr;
+    gap: 48px 0;
   }
 
   @media ${QUERIES.laptopAndUp} {
     grid-template-areas:
       "main-story secondary-stories opinion-stories"
       "main-story advertisement advertisement";
-    grid-template-columns: 1fr 1fr minmax(300px, 1fr);
+    grid-template-columns: 5fr 4fr 3fr;
     grid-template-rows: 1fr 172px;
     gap: 0;
   }
@@ -98,7 +97,7 @@ const StoryList = styled.div`
 const OpinionStoryList = styled(StoryList)`
   @media ${QUERIES.tabletOnly} {
     flex-direction: row;
-    justify-content: space-between;
+    gap:32px;
   }
 `;
 
@@ -106,15 +105,18 @@ const VerticalStoryWrapper = styled.div`
   /* to have the border bottom only between elements but not the las ast */
   &:not(:last-of-type) {
     border-bottom: 1px solid var(--color-gray-300);
+    padding-bottom: 16px;
+    margin-bottom: 16px;
   }
-  padding-bottom: 16px;
-  margin-bottom: 16px;
 `;
 
 const VerticalOpinionStoryWrapper = styled(VerticalStoryWrapper)`
   @media ${QUERIES.tabletOnly} {
+    flex:1;
     &:not(:last-of-type) {
-      border-bottom: none;
+      border-bottom: revert;
+      padding-bottom: revert;
+      margin-bottom: revert;
     }
   }
 `;
@@ -125,22 +127,16 @@ const OpinionSection = styled.section`
   margin-bottom: 16px;
   @media ${QUERIES.laptopAndUp} {
     border-left: 1px solid var(--color-gray-300);
-  }
-  @media ${QUERIES.tabletAndUp} {
-    margin-top: 48px;
+    margin-top:-8px;
   }
 `;
 
 const AdvertisementSection = styled.section`
   grid-area: advertisement;
-  padding-top: 16px;
-  margin-left: 16px;
-
-  @media ${QUERIES.tabletAndUp} {
-    margin-top: 48px;
-  }
 
   @media ${QUERIES.laptopAndUp} {
+    padding-top: 16px;
+    margin-left: 16px;
     border-top: 1px solid var(--color-gray-300);
   }
 `;

@@ -19,9 +19,6 @@ const OpinionStory = ({ id, title, author, avatar }) => {
 
 const Wrapper = styled.article`
   color: var(--color-gray-900);
-  @media ${QUERIES.tabletOnly} {
-    max-width: 180px;
-  }
 `;
 
 
