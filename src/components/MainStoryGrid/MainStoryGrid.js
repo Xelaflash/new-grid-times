@@ -61,6 +61,7 @@ const MainStorySection = styled.section`
 
 const SecondaryStorySection = styled.section`
   grid-area: secondary-stories;
+  gap: 16px;
 `;
 
 const StoryList = styled.div`
