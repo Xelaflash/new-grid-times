@@ -28,15 +28,15 @@ const Header = () => {
           </ActionGroup>
         </Row>
       </SuperHeader>
-      <LaptopHeader>
-        <ActionGroup>
+      <MainHeader>
+        <DesktopActionGroup>
           <button>
             <Search size={24} />
           </button>
           <button>
             <Menu size={24} />
           </button>
-        </ActionGroup>
+        </DesktopActionGroup>
         <Logo />
         <ButtonWrapper>
         <Button>Subscribe</Button>
@@ -44,9 +44,6 @@ const Header = () => {
             Already a subscriber?
           </a>
         </ButtonWrapper>
-      </LaptopHeader>
-      <MainHeader>
-        <Logo />
       </MainHeader>
     </header>
   );
@@ -70,7 +67,6 @@ const Row = styled(MaxWidthWrapper)`
 const ActionGroup = styled.div`
   display: flex;
   gap: 24px;
-
   /*
     FIX: Remove the inline spacing that comes with
     react-feather icons.
@@ -80,33 +76,12 @@ const ActionGroup = styled.div`
   }
 `;
 
-const LaptopHeader = styled.nav`
-  display: none;
-  margin-top: 16px;
-  margin-bottom: 4rem;
+const DesktopActionGroup = styled(ActionGroup)`
+  display:none;
   @media ${QUERIES.laptopAndUp} {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    .laptopLogo {
-      margin-top: -2px;
-    }
-    .subscriber {
-      font-style: italic;
-      text-decoration: underline;
-      color: var(--color-gray-900);
-      font-size: 14px;
-      font-weight: var(--font-weight-normal);
-    }
+    display:flex;
   }
 `;
-
-const ButtonWrapper = styled.div`
-  text-align: center;
-  padding-top: 16px;
-`;
-
-
 
 const MainHeader = styled(MaxWidthWrapper)`
   display: flex;
@@ -115,8 +90,36 @@ const MainHeader = styled(MaxWidthWrapper)`
   margin-top: 32px;
   margin-bottom: 48px;
 
+  @media ${QUERIES.tabletAndUp} {
+    margin-top: 48px;
+    margin-bottom: 72px;
+  }
+
   @media ${QUERIES.laptopAndUp} {
-    display:none;
+    display: grid;
+    /* forces the left and right column to take as much space as possible
+    so middle column is centered  */
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    justify-items: start;
+  }
+`;
+
+const ButtonWrapper = styled.div`
+  display: none;
+  @media ${QUERIES.laptopAndUp} {
+    display: revert;
+    text-align: center;
+    /* to override the grid alignment for this specific element */
+    justify-self: end;
+    align-self:end;
+    .subscriber {
+      font-style: italic;
+      text-decoration: underline;
+      color: var(--color-gray-900);
+      font-size: 14px;
+      font-weight: var(--font-weight-normal);
+    }
   }
 `;
 
